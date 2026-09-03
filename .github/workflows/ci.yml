@@ -17,9 +17,6 @@ jobs:
     - name: Checkout Source Code
       uses: actions/checkout@v4
       
-    - name: change to working Direction
-      run: cd my-app
-
     - name: Setup Java
       uses: actions/setup-java@v4
       with:
@@ -27,8 +24,8 @@ jobs:
         java-version: '17'
 
     - name: Build with Maven
-      run: mvn clean package
+      run: cd my-app/ && mvn clean package
 
     - name: Run Java Application
       run: |
-        java -cp target/my-app-1.0-SNAPSHOT.jar com.mycompany.app.App
+        java -cp my-app/target/my-app-1.0-SNAPSHOT.jar com.mycompany.app.App
